@@ -2,12 +2,12 @@ import Banner from "./Banner";
 import Movies from "./Movies";
 
 
-function Home(){
+function Home({watchlistMovies,setwatchlistMovies}){
 
     return(
         <>
             <Banner/>
-            <Movies/>
+            <Movies watchlistMovies={watchlistMovies} setwatchlistMovies={setwatchlistMovies}/>
         </>
     )
 }

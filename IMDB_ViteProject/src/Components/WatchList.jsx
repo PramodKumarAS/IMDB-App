@@ -1,13 +1,12 @@
 import { useEffect,useState } from "react";
 import { GENRE_IDS_MAP } from "../../Constants";
 
-function WatchList(){
+function WatchList({watchlistMovies,setwatchlistMovies}){
 
     const getGenreFromId = id => {
         return GENRE_IDS_MAP[id];
     }
 
-    const [watchlistMovies,setWatchList] = useState([])
     const [isTitleSorted,setTitleSorted] = useState(true)
     const [isvote_averageSorted,setvote_averageSorted] = useState(true)
     const [isRelaseDateSorted,setRelaseDateSorted] = useState(true)

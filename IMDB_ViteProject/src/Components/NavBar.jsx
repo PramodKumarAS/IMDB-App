@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import WatchList from "./WatchList";
 
-function NavBar() {
+function NavBar({watchlistMovies,setwatchlistMovies}) {
   return (
       <Router>
        
@@ -13,8 +13,8 @@ function NavBar() {
         </nav>
 
           <Routes>
-            <Route path="/" element={<Home/>}></Route>
-            <Route path="/WatchList" element={<WatchList/>}></Route>
+            <Route path="/" element={<Home watchlistMovies={watchlistMovies} setwatchlistMovies={setwatchlistMovies}/> }></Route>
+            <Route path="/WatchList" element={<WatchList watchlistMovies={watchlistMovies} setwatchlistMovies={setwatchlistMovies}/>}></Route>
           </Routes>
 
     </Router>

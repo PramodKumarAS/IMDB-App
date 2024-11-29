@@ -3,13 +3,11 @@ import MovieCard from "./MovieCard";
 import axios from 'axios';
 import Pagination from './Pagination';
 
-function Movies(){
+function Movies({watchlistMovies,setwatchlistMovies}){
     const[movies,setMovies] = useState([]);
     const[moviesNotLoaded,setmoviesNotLoaded] = useState("");
     const[pageNumber,setpageNumber] = useState(1);
     
-    const[watchlistMovies,setwacthlistMovies] = useState([]);
-
     useEffect(()=>{
 
         axios.get('https://api.themoviedb.org/3/trending/movie/day',{
@@ -31,7 +29,7 @@ function Movies(){
         const watchListedfromlocalJSON = localStorage.getItem("watchlisted");
         
         if(watchListedfromlocalJSON){
-            setwacthlistMovies(JSON.parse(watchListedfromlocalJSON))
+            setwatchlistMovies(JSON.parse(watchListedfromlocalJSON))
         }
     },[])
 
@@ -45,7 +43,7 @@ function Movies(){
 
     function addToWatchlist(wacthListmovie){
         const updatedList = [...watchlistMovies,wacthListmovie]
-        setwacthlistMovies(updatedList);
+        setwatchlistMovies(updatedList);
         
         localStorage.setItem("watchlisted",JSON.stringify(updatedList));
 
@@ -53,7 +51,7 @@ function Movies(){
     function removeFromWatchlist(wacthListmovie){
         
         const filteredMovies = watchlistMovies.filter((movie)=>wacthListmovie.id!==movie.id);
-        setwacthlistMovies(filteredMovies);
+        setwatchlistMovies(filteredMovies);
 
         localStorage.setItem("watchlisted",JSON.stringify(filteredMovies));
 
