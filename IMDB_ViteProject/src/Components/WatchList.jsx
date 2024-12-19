@@ -17,7 +17,7 @@ function WatchList({watchlistMovies,setwatchlistMovies}){
 
     useEffect(() => {
         const moviesFromLS = localStorage.getItem('watchlisted');
-        setWatchList(JSON.parse(moviesFromLS))
+        setwatchlistMovies(JSON.parse(moviesFromLS))
     }, [])
 
     useEffect(() => {
@@ -30,37 +30,37 @@ function WatchList({watchlistMovies,setwatchlistMovies}){
 
     function handleAscendingSort_title(){
         const updatedArr =watchlistMovies.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
-        setWatchList([...updatedArr])
+        setwatchlistMovies([...updatedArr])
         setTitleSorted(false);
     }
 
     function handleDescendingSort_title(){
         const updatedArr =watchlistMovies.sort((a, b) => b.title.toLowerCase().localeCompare(a.title.toLowerCase()));
-        setWatchList([...updatedArr])
+        setwatchlistMovies([...updatedArr])
         setTitleSorted(true);
     }
 
     function handleAscendingSort_vote_average(){
         const updatedArr =watchlistMovies.sort((a, b) => a.vote_average-b.vote_average);
-        setWatchList([...updatedArr])
+        setwatchlistMovies([...updatedArr])
         setvote_averageSorted(false)
     }
 
     function handleDescendingSort_vote_average(){
         const updatedArr =watchlistMovies.sort((a, b) => b.vote_average-a.vote_average);
-        setWatchList([...updatedArr])
+        setwatchlistMovies([...updatedArr])
         setvote_averageSorted(true)
     }
 
     function handleAscendingSort_release_date(){
         const updatedArr =watchlistMovies.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
-        setWatchList([...updatedArr])
+        setwatchlistMovies([...updatedArr])
         setRelaseDateSorted(false)
     }
 
     function handleDescendingSort_release_date(){
         const updatedArr =watchlistMovies.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
-        setWatchList([...updatedArr])
+        setwatchlistMovies([...updatedArr])
         setRelaseDateSorted(true)
     }
 
